@@ -1,0 +1,52 @@
+name: 'test-cppcheck'
+description: 'Perform static code analysis using Cppcheck'
+author: 'Rakibul Yeasin https://github.com/dreygur'
+inputs:
+  debug:
+    description: 'Debug script run to troubleshoot configuration errors'
+    required: false
+    default: false
+  enabled checks:
+    description: 'Which checks are enabled'
+    required: false
+    default: 'all'
+  enable inconclusive:
+    description: 'Enable inconclusive checks'
+    required: false
+    default: false
+  exclude from check:
+    description: 'Which directories or files to exclude from analysis; format: paths prefixed with `-i`, space-delimited'
+    required: false
+    default: ''
+  generate report:
+    description: 'Whether to generate an XML report'
+    required: false
+    default: true
+  include directories:
+    description: 'Include paths; format: directories prefixed with `-I`, space-delimited'
+    required: false
+    default: ''
+  path:
+    description: 'Path to your project'
+    required: true
+    default: '.'
+  report name:
+    description: 'Name of your report'
+    required: false
+    default: ${{ github.repository }}
+  verbose:
+    description: 'Verbose Cppcheck error descriptions'
+    required: false
+    default: false
+
+outputs:
+  reportPath:
+    description: 'Path to XML report file'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+
+branding:
+  icon: 'check'
+  color: 'gray-dark'
