@@ -22,13 +22,9 @@ fi
 cppcheck "$INPUT_PATH" \
     --enable="$INPUT_ENABLED_CHECKS" \
     ${ENABLE_INCONCLUSIVE:+--inconclusive} \
-    # ${GENERATE_REPORT:+--output-file=$REPORT_FILE} \
     ${VERBOSE:+--verbose} \
     ${CHECK_CONFIG:+--check-config} \
-    -j "$(nproc)" \
-    # --xml \
-    # "$INPUT_INCLUDE_DIRECTORIES" \
-    # "$INPUT_EXCLUDE_FROM_CHECK"
+    -j "$(nproc)"
 
 if [ "$GENERATE_REPORT" ]; then
     cppcheck-htmlreport \
