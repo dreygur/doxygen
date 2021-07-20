@@ -1,4 +1,4 @@
-name: 'test-cppcheck'
+name: 'runntest-cppcheck'
 description: 'Perform static code analysis using Cppcheck'
 author: 'Rakibul Yeasin https://github.com/dreygur'
 inputs:
