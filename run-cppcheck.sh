@@ -18,6 +18,4 @@ cppcheck "$INPUT_PATH" \
     --enable="$INPUT_ENABLED_CHECKS" \
     ${ENABLE_INCONCLUSIVE:+--inconclusive} \
     ${VERBOSE:+--verbose} \
-    ${CHECK_CONFIG:+--check-config} \
-    -j "$(nproc)"
-
+    ${CHECK_CONFIG:+--check-config}
