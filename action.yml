@@ -13,7 +13,7 @@ inputs:
   enable inconclusive:
     description: 'Enable inconclusive checks'
     required: false
-    default: false
+    default: true
   exclude from check:
     description: 'Which directories or files to exclude from analysis; format: paths prefixed with `-i`, space-delimited'
     required: false
