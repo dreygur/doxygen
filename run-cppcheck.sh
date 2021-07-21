@@ -18,4 +18,5 @@ cppcheck "$INPUT_PATH" \
     --enable="$INPUT_ENABLED_CHECKS" \
     ${ENABLE_INCONCLUSIVE:+--inconclusive} \
     ${VERBOSE:+--verbose} \
-    ${CHECK_CONFIG:+--check-config}
+    ${CHECK_CONFIG:+--check-config} \
+    --error-exitcode="$INPUT_ERROR_EXIT_CODE"

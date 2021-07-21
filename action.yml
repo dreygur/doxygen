@@ -30,6 +30,10 @@ inputs:
     description: 'Verbose Cppcheck error descriptions'
     required: false
     default: true
+  error exit code:
+    description: 'Exit Code for any error (Default is 0)'
+    required: false
+    default: 235
 
 runs:
   using: 'docker'
