@@ -29,7 +29,7 @@ inputs:
   verbose:
     description: 'Verbose Cppcheck error descriptions'
     required: false
-    default: false
+    default: true
 
 runs:
   using: 'docker'
