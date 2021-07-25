@@ -26,14 +26,6 @@ inputs:
     description: 'Path to your project'
     required: true
     default: '.'
-  generate report:
-    description: 'Whether to generate an XML report'
-    required: false
-    default: false
-  report name:
-    description: 'Name of your report'
-    required: false
-    default: ${{ github.repository }}
   verbose:
     description: 'Verbose Cppcheck error descriptions'
     required: false
@@ -42,10 +34,6 @@ inputs:
     description: 'Exit Code for any error (Default is 0)'
     required: false
     default: 235
-
-outputs:
-  reportPath:
-    description: 'Path to XML report file'
 
 runs:
   using: 'docker'
