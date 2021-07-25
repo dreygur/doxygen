@@ -10,6 +10,11 @@ if [ "$INPUT_VERBOSE" = 'true' ]; then
     VERBOSE='yep'
 fi
 
+if [ "$INPUT_GENERATE_REPORT" = 'true' ]; then
+    GENERATE_REPORT='yep'
+    REPORT_FILE=report.xml
+fi
+
 if [ "$INPUT_ENABLED_INCONCLUSIVE" = 'true' ]; then
     ENABLE_INCONCLUSIVE='yep'
 fi
@@ -19,4 +24,16 @@ cppcheck "$INPUT_PATH" \
     ${ENABLE_INCONCLUSIVE:+--inconclusive} \
     ${VERBOSE:+--verbose} \
     ${CHECK_CONFIG:+--check-config} \
-    --error-exitcode="$INPUT_ERROR_EXIT_CODE"
+    --error-exitcode="$INPUT_ERROR_EXIT_CODE" \
+    ${GENERATE_REPORT:+--output-file=$REPORT_FILE} \
+    -j "$(nproc)" \
+    --xml \
+    "$INPUT_INCLUDE_DIRECTORIES" \
+    "$INPUT_EXCLUDE_FROM_CHECK"
+
+if [ "$GENERATE_REPORT" ]; then
+    cppcheck-htmlreport \
+        --file="$REPORT_FILE" \
+        --title="$INPUT_REPORT_NAME" \
+        --report-dir=output
+fi
