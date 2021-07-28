@@ -26,7 +26,7 @@ if [ "$BUILD_LATEX" = true ] ; then
   PACKAGES="$PACKAGES perl build-base texlive-full biblatex ghostscript"
 fi
 
-apk add $PACKAGES
+sudo apt-get install $PACKAGES -y
 
 doxygen $1
 
