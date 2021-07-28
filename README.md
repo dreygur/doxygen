@@ -8,37 +8,29 @@ Use with an action such as [actions-gh-pages](https://github.com/peaceiris/actio
 
 ## Inputs
 
-### 'working-directory'
+#### `working-directory`
 
 **Optional** Path of the working directory to change to before running doxygen. Default: `.`
 
-### 'doxyfile-path'
+#### `doxyfile-path`
 
 **Optional** Path of the Doxyfile relative to the working directory. Default: `./Doxyfile`.
 
-### 'enable-latex'
+#### `enable-latex`
 
 **Optional** Flag to enable `make`-ing of the LaTeX part of the doxygen output. Default: `false`.
 
-### 'additional-packages'
+#### `additional-packages`
 
 **Optional** Additional [Alpine packages](https://pkgs.alpinelinux.org/packages) to install in the environment (i.e. font packages)
 
-## Example usage with additional font package
+## Example usage with set working dir and doxyfile path
 
 ```yaml
 uses: dreygur/doxygen@latest
 with:
-    additional-packages: font-fira-code
-```
-
-## Example usage with set working dir and doxyfile path (no LaTeX)
-
-```yaml
-uses: dreygur/doxygen@latest
-with:
-    working-directory: 'submodule/'
-    doxyfile-path: 'docs/Doxygen'
+  working-directory: 'submodule/'
+  doxyfile-path: 'docs/Doxygen'
 ```
 
 ## Example usage (with LaTeX)
@@ -46,7 +38,15 @@ with:
 ```yaml
 uses: dreygur/doxygen@latest
 with:
-    working-directory: 'submodule/'
-    doxyfile-path: 'docs/Doxygen'
-    enable-latex: true
+  working-directory: 'submodule/'
+  doxyfile-path: 'docs/Doxygen'
+  enable-latex: true
+```
+
+## Example usage with additional font package
+
+```yaml
+uses: dreygur/doxygen@latest
+with:
+  additional-packages: font-fira-code
 ```
