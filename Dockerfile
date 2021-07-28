@@ -1,5 +1,5 @@
-FROM facthunder/cppcheck
+FROM alpine:latest
 
-COPY run-cppcheck.sh /run-cppcheck.sh
+COPY entrypoint.sh /entrypoint.sh
 
-ENTRYPOINT ["/run-cppcheck.sh"]
+ENTRYPOINT ["/entrypoint.sh"]

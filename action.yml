@@ -1,44 +1,31 @@
-name: 'cppcheck-runtest'
-description: 'Perform static code analysis using Cppcheck'
+name: 'Doxygen as Action'
+description: 'Generate documentation on a commented project using doxygen'
+branding:
+  icon: 'book-open'
+  color: 'gray-dark'
 author: 'Rakibul Yeasin https://github.com/dreygur'
 inputs:
-  debug:
-    description: 'Debug script run to troubleshoot configuration errors'
-    required: false
-    default: false
-  enabled checks:
-    description: 'Which checks are enabled'
-    required: false
-    default: 'all'
-  enable inconclusive:
-    description: 'Enable inconclusive checks'
-    required: false
-    default: true
-  exclude from check:
-    description: 'Which directories or files to exclude from analysis; format: paths prefixed with `-i`, space-delimited'
-    required: false
-    default: ''
-  include directories:
-    description: 'Include paths; format: directories prefixed with `-I`, space-delimited'
-    required: false
-    default: ''
-  path:
-    description: 'Path to your project'
+  doxyfile-path:
+    description: 'Path to Doxyfile'
+    required: true
+    default: './Doxyfile'
+  working-directory:
+    description: 'Working directory'
     required: true
     default: '.'
-  verbose:
-    description: 'Verbose Cppcheck error descriptions'
+  enable-latex:
+    description: 'Generate latex documentation'
     required: false
-    default: true
-  error exit code:
-    description: 'Exit Code for any error (Default is 0)'
+    default: false
+  additional-packages:
+    description: 'Extra alpine packages for the build environment'
     required: false
-    default: 235
-
+    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
-
-branding:
-  icon: 'check'
-  color: 'gray-dark'
+  args:
+    - ${{ inputs.doxyfile-path }}
+    - ${{ inputs.working-directory }}
+    - ${{ inputs.enable-latex }}
+    - ${{ inputs.additional-packages }}
